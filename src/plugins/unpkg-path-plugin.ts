@@ -25,12 +25,6 @@ export const unpkgPathPlugin = () => {
           namespace: 'a',
           path: `https://unpkg.com/${args.path}`,
         }
-        // else if (args.path === 'tiny-test-pkg') {
-        //   return {
-        //     path: 'https://unpkg.com/tiny-test-pkg@1.0.0/index.js',
-        //     namespace: 'a',
-        //   }
-        // }
       })
 
       // used to actually load up a file off the file system.
@@ -42,7 +36,7 @@ export const unpkgPathPlugin = () => {
           return {
             loader: 'jsx',
             contents: `
-              const message = require('medium-test-pkg');
+              const message = require('nested-test-pkg');
               console.log(message);
             `,
           }
