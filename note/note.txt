@@ -1,0 +1,3 @@
+caching packages inside the browser
+indexedDB - check on Application -> IndexedDB tab, similar to localStorage
+localForage
