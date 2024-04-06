@@ -1,11 +1,16 @@
 import * as esbuild from 'esbuild-wasm'
 import { useEffect, useState, useRef } from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin'
 import { fetchPlugin } from './plugins/fetch-plugin'
 
+const el = document.getElementById('root')
+
+const root = ReactDOM.createRoot(el!)
+
 const App = () => {
   const ref = useRef<any>()
+  const iframe = useRef<any>()
   const [input, setInput] = useState('')
   const [code, setCode] = useState()
 
@@ -25,7 +30,8 @@ const App = () => {
       },
     })
 
-    setCode(result.outputFiles[0].text)
+    // setCode(result.outputFiles[0].text)
+    iframe.current.contentWindow.postMessage(result.outputFiles[0].text, '*')
   }
 
   const startService = async () => {
@@ -39,7 +45,19 @@ const App = () => {
     startService()
   }, [])
 
-  const html = `<script>${code}</script>`
+  const html = `
+    <html>
+      <head></head>
+        <body>
+          <div id="root"></div>
+          <script>
+            window.addEventListener('message', (event) => {
+              eval(event.data)
+            }, false)
+          </script>
+        </body>
+    </html>
+  `
 
   return (
     <div>
@@ -51,9 +69,9 @@ const App = () => {
         <button onClick={onClick}>Submit</button>
       </div>
       <pre>{code}</pre>
-      <iframe sandbox='allow-scripts' srcDoc={html}></iframe>
+      <iframe ref={iframe} sandbox='allow-scripts' srcDoc={html}></iframe>
     </div>
   )
 }
 
-ReactDom.render(<App />, document.querySelector('#root'))
+root.render(<App />)
