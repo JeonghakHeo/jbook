@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import ReactDOM from 'react-dom/client'
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin'
 import { fetchPlugin } from './plugins/fetch-plugin'
+import CodeEditor from './components/MonacoEditor'
 
 const el = document.getElementById('root')
 
@@ -65,6 +66,7 @@ const App = () => {
 
   return (
     <div>
+      <CodeEditor />
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
