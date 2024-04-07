@@ -1,9 +1,10 @@
+import 'bulmaswatch/superhero/bulmaswatch.min.css'
 import * as esbuild from 'esbuild-wasm'
 import { useEffect, useState, useRef } from 'react'
 import ReactDOM from 'react-dom/client'
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin'
 import { fetchPlugin } from './plugins/fetch-plugin'
-import CodeEditor from './components/MonacoEditor'
+import CodeEditor from './components/code-editor'
 
 const el = document.getElementById('root')
 
@@ -77,7 +78,12 @@ const App = () => {
       <div>
         <button onClick={onClick}>Submit</button>
       </div>
-      <iframe ref={iframe} sandbox='allow-scripts' srcDoc={html}></iframe>
+      <iframe
+        title='code preview'
+        ref={iframe}
+        sandbox='allow-scripts'
+        srcDoc={html}
+      ></iframe>
     </div>
   )
 }
