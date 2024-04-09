@@ -2,8 +2,10 @@ caching packages inside the browser
 indexedDB - check on Application -> IndexedDB tab, similar to localStorage
 localForage
 
+
 When building, ESBuild generates js file and css file.
 ESBuild doesn't have a filesystem to work with(we are working on a browser), it is not able to load up the css that we import(or the path to load the css).
 https://esbuild.github.io/content-types/#global-css
 
 
+Later there will be multiple Preview compoments. They will need to use the bundling logic 
