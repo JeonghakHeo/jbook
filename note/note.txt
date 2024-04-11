@@ -15,3 +15,9 @@ When dragging, if mouse goes over to iframe, it loses event(or communication) be
 To solve this, we can add html element on top of(or over) iframe and that html element will receive the event as opposed to into the iframe
 
 When dragging, on body element react-draggable-transparent-selection class get applied. With that, we can add pesudo after class and this pesudo class sits on top of iframe so it doesn't block the event
+
+Section 14
+async error invalid code error 
+Caught, Uncaught error in/outside of try catch 
+error event default behavior
+runtime error, compilation error
