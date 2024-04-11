@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import CodeEditor from './code-editor'
 import Preview from './preview'
 import bundle from '../bundler'
-import Resizable from '../resizable'
+import Resizable from './resizable'
 
 const CodeCell = () => {
   const [code, setCode] = useState('')
