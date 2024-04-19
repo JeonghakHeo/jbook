@@ -25,6 +25,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       const { id, content } = action.payload
 
       state.data[id].content = content
+
       return state
     case ActionType.DELETE_CELL:
       delete state.data[action.payload]
@@ -37,7 +38,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       const targetIndex = direction === 'up' ? index - 1 : index + 1
 
       if (targetIndex < 0 || targetIndex > state.order.length - 1) {
-        return
+        return state
       }
 
       state.order[index] = state.order[targetIndex]
@@ -65,9 +66,10 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
     default:
       return state
   }
-})
+}, initialState)
 
 const randomId = () => {
   return Math.random().toString(36).substr(2, 5)
 }
+
 export default reducer
