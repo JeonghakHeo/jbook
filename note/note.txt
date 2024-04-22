@@ -21,3 +21,8 @@ async error invalid code error
 Caught, Uncaught error in/outside of try catch 
 error event default behavior
 runtime error, compilation error
+
+
+Section 19 L.248
+createBundle in useEffect dependency array.
+
