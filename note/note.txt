@@ -24,5 +24,6 @@ runtime error, compilation error
 
 
 Section 19 L.248
-createBundle in useEffect dependency array.
-
+createBundle in useEffect dependency array in code-cell.
+affected causing flashing issue on preview. it was due to the bound action. 
+every time when the code-cell is re-rendered, it created a new version of the bound action. fixed by memoizing the action to cache.
